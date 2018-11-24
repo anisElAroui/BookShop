@@ -2,14 +2,17 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^7.1.3",
+        "php": "^7.2.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.1",
+        "friendsofsymfony/user-bundle": "~2.0",
+        "lexik/jwt-authentication-bundle": "^2.6",
         "symfony/console": "*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "*",
         "symfony/orm-pack": "^1.0",
+        "symfony/swiftmailer-bundle": "^3.2",
         "symfony/yaml": "*"
     },
     "require-dev": {
