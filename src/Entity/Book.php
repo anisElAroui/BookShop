@@ -8,9 +8,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * A book.
@@ -18,6 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  *
  * @ApiResource
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "title": "partial", "description": "partial"})
  */
 class Book
 {
@@ -34,6 +38,7 @@ class Book
      * @var string|null The ISBN of this book (or null if doesn't have one).
      *
      * @ORM\Column(nullable=true)
+     * @Assert\Isbn
      */
     public $isbn;
 
@@ -41,6 +46,7 @@ class Book
      * @var string The title of this book.
      *
      * @ORM\Column
+     * @Assert\NotBlank
      */
     public $title;
 
@@ -48,6 +54,7 @@ class Book
      * @var string The description of this book.
      *
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     public $description;
 
@@ -55,6 +62,7 @@ class Book
      * @var string The author of this book.
      *
      * @ORM\Column
+     * @Assert\NotBlank
      */
     public $author;
 
@@ -62,6 +70,7 @@ class Book
      * @var \DateTimeInterface The publication date of this book.
      *
      * @ORM\Column(type="datetime")
+     * @Assert\NotNull
      */
     public $publicationDate;
 

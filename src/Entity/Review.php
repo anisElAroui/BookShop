@@ -8,9 +8,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * A review of a book.
@@ -18,6 +21,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ORM\Entity
  *
  * @ApiResource
+ * @ApiFilter(SearchFilter::class, properties={"book": "exact"})
+ * @ApiFilter(OrderFilter::class, properties={"rating": "DESC"})
  */
 class Review
 {
@@ -34,6 +39,7 @@ class Review
      * @var int The rating of this review (between 0 and 5).
      *
      * @ORM\Column(type="smallint")
+     * @Assert\Range(min=0, max=5)
      */
     public $rating;
 
