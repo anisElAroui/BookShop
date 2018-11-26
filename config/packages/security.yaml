@@ -24,6 +24,7 @@ security:
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
 
+        # comment to activate graphql
         main:
             pattern: ^/api/
             provider: fos_userbundle
@@ -31,7 +32,6 @@ security:
             anonymous: true
             lexik_jwt: ~
 
-        # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
