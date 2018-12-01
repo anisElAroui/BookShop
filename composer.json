@@ -17,8 +17,11 @@
         "webonyx/graphql-php": "^0.12.6"
     },
     "require-dev": {
+        "symfony/browser-kit": "*",
+        "symfony/css-selector": "*",
         "symfony/dotenv": "*",
         "symfony/maker-bundle": "^1.9",
+        "symfony/phpunit-bridge": "*",
         "symfony/web-server-bundle": "*"
     },
     "config": {
