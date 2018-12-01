@@ -37,6 +37,22 @@ class BookApiTest extends WebTestCase
         $this->assertSame(200, $response->getStatusCode());
     }
 
+    public function testPostBook()
+    {
+        $token = $this->getToken('anisAr', '20365270');
+        $this->client->setServerParameter('HTTP_AUTHORIZATION', "Bearer $token");
+
+        $this->client->request('Post', '/api/books', array(
+            "isbn"=> "9781782164104",
+            "title"=> "Persistence in PHP with the Doctrine ORM",
+            "description"=> "This book is designed for PHP developers and architects who want to modernize their skills through better understanding of Persistence and ORM.",
+            "author"=> "Kévin Dunglas",
+            "publicationDate"=> "2013-12-01"
+        ));
+        $response = $this->client->getResponse();
+        $this->assertSame(200, $response->getStatusCode());
+    }
+
     /**
      * Get access token from authentication WS
      *
